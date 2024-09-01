@@ -1,0 +1,33 @@
+@use "styles/_variables" as variables;
+
+.mainContainer {
+    width: 40px;
+    height: 100px;
+    padding-top: 11.9px;
+    padding-bottom: 15.1px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 19.1px;
+    border-radius: 10px;
+
+    background-color: variables.$veryLightGray;
+}
+
+.iconContainer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    &:hover {
+        background-color: variables.$moderateBlue;
+    }
+}
+.scoreText {
+    color: variables.$moderateBlue;
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: center;
+}

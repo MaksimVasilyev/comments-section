@@ -1,0 +1,94 @@
+@use "styles/_variables" as variables;
+
+.mainContainer {
+    display: flex;
+    gap: 24px;
+    // width: 730px;
+    // height: 167px;
+    border-radius: 8px;
+    background-color: variables.$white;
+    padding: 24px;
+}
+.contentContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+.userReplyContainer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+.userInfoContainer {
+    display: flex;
+    gap: 16px;
+    align-items: center;
+}
+
+.avatarContainer {
+    width: 32px;
+    height: 32px;
+    img {
+        width: 100%;
+        height: auto;
+        object-fit: contain;
+    }
+}
+.userName {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 19px;
+    text-align: left;
+    color: variables.$darkBlue;
+}
+
+.date {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    text-align: left;
+    color: variables.$grayishBlue;
+    white-space: nowrap;
+}
+
+.replyContainer {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+
+    p {
+        color: variables.$moderateBlue;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+    }
+    img {
+        width: 14px;
+        height: 12.25px;
+    }
+
+    &:hover {
+        p {
+            color: variables.$ligtGreyishBlue;
+        }
+        .replySvg path {
+            fill: variables.$ligtGreyishBlue;
+        }
+    }
+}
+.commentText {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 24px;
+    color: variables.$grayishBlue;
+    // width: 618px;
+    // height: 72px;
+}
+.replyingTo {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 24px;
+    color: variables.$moderateBlue;
+}

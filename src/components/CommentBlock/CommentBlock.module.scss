@@ -1,0 +1,23 @@
+@use "styles/_variables" as variables;
+
+.mainContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.repliesContainer {
+    margin-left: 40px;
+    display: flex;
+    gap: 43px;
+}
+.replies {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+.verticalLine {
+    width: 2px;
+    height: 348px;
+    border-left: 2px solid variables.$lightGrey;
+}
