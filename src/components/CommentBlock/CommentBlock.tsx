@@ -58,6 +58,7 @@ const CommentBlock: React.FC<CommentBlockProps> = ({
                 user={reply.user}
                 isReply={true}
                 replyingTo={reply.replyingTo}
+                isCurrentUser={currentUser.username === reply.user.username}
               />
             ))}
           </div>

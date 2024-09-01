@@ -42,6 +42,17 @@
     text-align: left;
     color: variables.$darkBlue;
 }
+.youDiv {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 36px;
+    height: 19px;
+    border-radius: 2px;
+    background-color: variables.$moderateBlue;
+    color: variables.$white;
+    margin-left: -8px;
+}
 
 .date {
     font-size: 16px;
@@ -50,6 +61,11 @@
     text-align: left;
     color: variables.$grayishBlue;
     white-space: nowrap;
+}
+
+.deleteReplyContainer {
+    display: flex;
+    gap: 23.86px;
 }
 
 .replyContainer {
@@ -75,6 +91,32 @@
         }
         .replySvg path {
             fill: variables.$ligtGreyishBlue;
+        }
+    }
+}
+.deleteContainer {
+    display: flex;
+    gap: 6px;
+    align-items: center;
+
+    p {
+        color: variables.$softRed;
+        font-size: 16px;
+        font-weight: 500;
+        line-height: 24px;
+        text-align: left;
+    }
+    img {
+        width: 11.53px;
+        height: 14px;
+    }
+
+    &:hover {
+        p {
+            color: variables.$paleRed;
+        }
+        .deleteSvg path {
+            fill: variables.$paleRed;
         }
     }
 }

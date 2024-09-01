@@ -8,6 +8,7 @@ export interface CommentProps {
   replyingTo?: string;
   user: { image: { png: string; webp: string }; username: string };
   isReply?: boolean;
+  isCurrentUser?: boolean;
 }
 const Comment: React.FC<CommentProps> = ({
   id,
@@ -17,6 +18,7 @@ const Comment: React.FC<CommentProps> = ({
   user,
   isReply = false,
   replyingTo,
+  isCurrentUser,
 }) => {
   return (
     <div
@@ -31,12 +33,22 @@ const Comment: React.FC<CommentProps> = ({
               <img src={user.image.png} alt="avatar" />
             </div>
             <p className={styles.userName}>{user.username}</p>
+            {isCurrentUser && <div className= {styles.youDiv}>you</div>}
             <p className={styles.date}> {createdAt}</p>
           </div>
-          <div
-            className={styles.replyContainer}
-            style={isReply ? { marginLeft: "217px" } : { marginLeft: "293px" }}
-          >
+           <div className= {styles.deleteReplyContainer}>
+          {isCurrentUser && (
+            <div className={styles.deleteContainer}>
+              <svg  className={styles.deleteSvg} width="12" height="14" xmlns="http://www.w3.org/2000/svg">
+                <path
+                  d="M1.167 12.448c0 .854.7 1.552 1.555 1.552h6.222c.856 0 1.556-.698 1.556-1.552V3.5H1.167v8.948Zm10.5-11.281H8.75L7.773 0h-3.88l-.976 1.167H0v1.166h11.667V1.167Z"
+                  fill="#ED6368"
+                />
+              </svg>
+              <p>Delete</p>
+            </div>
+          )}
+          <div className={styles.replyContainer}>
             <svg
               className={styles.replySvg}
               width="14"
@@ -49,6 +61,7 @@ const Comment: React.FC<CommentProps> = ({
               />
             </svg>
             <p>Reply</p>
+          </div>
           </div>
         </div>
         <p
