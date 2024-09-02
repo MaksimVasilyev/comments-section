@@ -2,6 +2,7 @@ import Comment from "components/Comment/Comment";
 import Rating from "components/Comment/Rating/Rating";
 import Reply from "components/Reply/Reply";
 import CommentBlock from "components/CommentBlock/CommentBlock";
+import DeleteModal from "components/DeleteModal/DeleteModal";
 import { useState } from "react";
 
 const commentData = {
