@@ -1,5 +1,11 @@
 @use "styles/_variables" as variables;
 
+.commentWithReplyContainer {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
 .mainContainer {
     display: flex;
     gap: 24px;
@@ -69,6 +75,7 @@
 }
 
 .replyContainer {
+    cursor: pointer;
     display: flex;
     gap: 6px;
     align-items: center;
@@ -95,6 +102,7 @@
     }
 }
 .deleteContainer {
+    cursor: pointer;
     display: flex;
     gap: 6px;
     align-items: center;

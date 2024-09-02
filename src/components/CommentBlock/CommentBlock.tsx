@@ -23,7 +23,7 @@ interface CommentBlockProps {
   createdAt: string;
   score: number;
   user: { image: { png: string; webp: string }; username: string };
-  replies: Array<CommentProps>;
+  replies?: Omit<CommentProps, 'currentUser'>[];
 }
 
 const CommentBlock: React.FC<CommentBlockProps> = ({
@@ -38,6 +38,7 @@ const CommentBlock: React.FC<CommentBlockProps> = ({
   return (
     <div className={styles.mainContainer}>
       <Comment
+        currentUser={currentUser}
         id={id}
         content={content}
         createdAt={createdAt}
@@ -50,6 +51,7 @@ const CommentBlock: React.FC<CommentBlockProps> = ({
           <div className={styles.replies}>
             {replies.map((reply) => (
               <Comment
+                currentUser={currentUser}
                 key={reply.id}
                 id={reply.id}
                 content={reply.content}

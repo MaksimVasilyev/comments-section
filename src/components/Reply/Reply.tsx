@@ -7,7 +7,7 @@ interface ReplyProps {
 
 const Reply: React.FC<ReplyProps> = ({ currentUser, replyingTo, isReply }) => {
   return (
-    <div className={styles.mainContainer}>
+    <div style={isReply ? { width: "642px" } : { width: "730px" }} className={styles.mainContainer}>
       <div className={styles.avatarContainer}>
         <img src={currentUser.image.png} alt="avatar" />
       </div>
