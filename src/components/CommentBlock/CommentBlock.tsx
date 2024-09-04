@@ -1,6 +1,5 @@
 import styles from "components/CommentBlock/CommentBlock.module.scss";
 import Comment, { CommentProps } from "components/Comment/Comment";
-import Reply from "components/Reply/Reply";
 
 interface CommentBlockProps {
   currentUser: { image: { png: string; webp: string }; username: string };
@@ -9,7 +8,7 @@ interface CommentBlockProps {
   createdAt: string;
   score: number;
   user: { image: { png: string; webp: string }; username: string };
-  replies?: Omit<CommentProps, 'currentUser'>[];
+  replies?: Omit<CommentProps, "currentUser">[];
 }
 
 const CommentBlock: React.FC<CommentBlockProps> = ({

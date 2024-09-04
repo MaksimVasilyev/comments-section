@@ -40,7 +40,7 @@ const Comment: React.FC<CommentProps> = ({
   const handleEdit = () => {
     setIsEdditing(true);
   };
-  console.log(user.image.png);
+
   return (
     <>
       {!isEdditing && (

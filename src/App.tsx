@@ -34,7 +34,7 @@ function App() {
     } else {
       setComments(data);
     }
-    console.log(commentsData);
+
   }, []);
 
   return (
