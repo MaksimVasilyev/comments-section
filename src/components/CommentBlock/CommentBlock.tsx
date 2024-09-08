@@ -29,6 +29,7 @@ const CommentBlock: React.FC<CommentBlockProps> = ({
         createdAt={createdAt}
         score={score}
         user={user}
+        isCurrentUser={currentUser.username === user.username}
       />
       {replies && replies.length > 0 && (
         <div className={styles.repliesContainer}>
