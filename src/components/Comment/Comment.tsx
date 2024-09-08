@@ -3,6 +3,7 @@ import Rating from "components/Comment/Rating/Rating";
 import Reply from "components/Reply/Reply";
 import { useState } from "react";
 import DeleteModal from "components/DeleteModal/DeleteModal";
+import { useComments } from "context/CommentsContext";
 
 export interface CommentProps {
   currentUser: { image: { png: string; webp: string }; username: string };
@@ -29,12 +30,20 @@ const Comment: React.FC<CommentProps> = ({
   const [isReplying, setIsReplying] = useState(false);
   const [deleteModalisOpen, setDeleteOpenIsOpen] = useState(false);
   const [isEdditing, setIsEdditing] = useState(false);
-
+  const { deleteComment } = useComments();
   const handleReply = () => {
     setIsReplying(true);
   };
+  const closeReply = () => {
+    setIsReplying(false);
+  };
+  const closeEdit = () => {
+    setIsEdditing(false);
+  };
   const handleDelete = () => {
     setDeleteOpenIsOpen(true);
+    deleteComment(id);
+    setDeleteOpenIsOpen(false);
   };
 
   const handleEdit = () => {
@@ -49,7 +58,7 @@ const Comment: React.FC<CommentProps> = ({
             className={styles.mainContainer}
             style={isReply ? { width: "642px" } : { width: "730px" }}
           >
-            <Rating score={score} onMinus={() => {}} onPlus={() => {}} />
+            <Rating id={id} score={score} />
             <div className={styles.contentContainer}>
               <div className={styles.userReplyContainer}>
                 <div className={styles.userInfoContainer}>
@@ -132,15 +141,19 @@ const Comment: React.FC<CommentProps> = ({
 
           {isReplying && (
             <Reply
+              onReply={closeReply}
+              id={id}
               currentUser={currentUser}
               isReply={isReply}
-           
+              replyingTo={user.username}
             />
           )}
         </div>
       )}
       {isEdditing && (
         <Reply
+          onEdit={closeEdit}
+          id={id}
           currentUser={currentUser}
           isReply={isReply}
           editedText={content}
