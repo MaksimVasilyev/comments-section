@@ -11,8 +11,14 @@
     justify-content: center;
     gap: 19.1px;
     border-radius: 10px;
-
     background-color: variables.$veryLightGray;
+
+    @include variables.mobile {
+        flex-direction: row;
+        width: 100px;
+        height: 40px;
+    }
+
 }
 
 .iconContainer {

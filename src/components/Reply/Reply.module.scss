@@ -8,7 +8,20 @@
     border-radius: 8px;
     background-color: variables.$white;
     padding: 24px;
+    @include variables.mobile {
+        flex-direction: column;
+        padding: 16px 16px 13px 16px;
+        height: 189px;
+    }
 }
+
+.mobileControllersContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+   
+}
+
 .avatarContainer {
     width: 40px;
     height: 40px;
@@ -17,10 +30,15 @@
         height: auto;
         object-fit: contain;
     }
+
+    @include variables.mobile {
+        width: 32px;
+        height: 32px;
+    }
 }
 .replyText {
     padding: 12px 24px;
-    border: 1px solid variables.$moderateBlue;
+    border: 1px solid variables.$lightGrey;
     border-radius: 8px;
     background-color: variables.$white;
     width: 506px;
@@ -35,6 +53,12 @@
         outline: none;
         border: 1px solid variables.$moderateBlue;
         box-shadow: none;
+    }
+
+    @include variables.mobile {
+        width: 311px;
+        height: 96px;
+        padding: 0;
     }
 }
 .replyButton {
@@ -51,5 +75,7 @@
 
     &:hover {
         background: variables.$ligtGreyishBlue;
+    }
+    @include variables.mobile {
     }
 }

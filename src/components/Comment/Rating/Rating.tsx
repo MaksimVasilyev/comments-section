@@ -5,8 +5,7 @@ import { useState } from "react";
 interface RatingProps {
   id: number;
   score: number;
-  // onPlus: (score: number) => void;
-  // onMinus: (score: number) => void;
+  
 }
 
 const Rating: React.FC<RatingProps> = ({

@@ -1,5 +1,6 @@
 import CommentBlock from "components/CommentBlock/CommentBlock";
 import Reply from "components/Reply/Reply";
+
 import { useComments } from "context/CommentsContext";
 
 function App() {
@@ -20,6 +21,7 @@ function App() {
         />
       ))}
       <Reply currentUser={commentsData.currentUser} />
+
     </>
   );
 }

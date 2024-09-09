@@ -1,5 +1,6 @@
 import { useState } from "react";
 import styles from "components/Reply/Reply.module.scss";
+import { useMediaQuery } from "react-responsive";
 import { useComments } from "context/CommentsContext";
 
 interface ReplyProps {
@@ -21,6 +22,7 @@ const Reply: React.FC<ReplyProps> = ({
   onEdit,
   onReply,
 }) => {
+  const isMobile = useMediaQuery({ maxWidth: 375 });
   const [commentText, setCommentText] = useState(
     replyingTo ? `@${replyingTo} ` : editedText
   );
@@ -40,23 +42,47 @@ const Reply: React.FC<ReplyProps> = ({
   };
 
   return (
-    <div
-      style={isReply ? { width: "642px" } : { width: "730px" }}
-      className={styles.mainContainer}
-    >
-      <div className={styles.avatarContainer}>
-        <img src={currentUser.image.png} alt="avatar" />
-      </div>
-      <textarea
-        className={styles.replyText}
-        value={commentText}
-        onChange={(event) => setCommentText(event.target.value)}
-        placeholder={replyingTo ? `@${replyingTo}` : ""}
-      />
-      <button onClick={handleClick} className={styles.replyButton}>
-        {isReply ? "REPLY" : "SEND"}
-      </button>
-    </div>
+    <>
+      {!isMobile ? (
+        <div
+          style={isReply ? { width: "642px" } : { width: "730px" }}
+          className={styles.mainContainer}
+        >
+          <div className={styles.avatarContainer}>
+            <img src={currentUser.image.png} alt="avatar" />
+          </div>
+          <textarea
+            className={styles.replyText}
+            value={commentText}
+            onChange={(event) => setCommentText(event.target.value)}
+            placeholder={replyingTo ? `@${replyingTo}` : ""}
+          />
+          <button onClick={handleClick} className={styles.replyButton}>
+            {isReply ? "REPLY" : "SEND"}
+          </button>
+        </div>
+      ) : (
+        <div
+          style={isReply ? { width: "325px" } : { width: "343px" }}
+          className={styles.mainContainer}
+        >
+          <textarea
+            className={styles.replyText}
+            value={commentText}
+            onChange={(event) => setCommentText(event.target.value)}
+            placeholder={replyingTo ? `@${replyingTo}` : ""}
+          />
+          <div className={styles.mobileControllersContainer}>
+            <div className={styles.avatarContainer}>
+              <img src={currentUser.image.png} alt="avatar" />
+            </div>
+            <button onClick={handleClick} className={styles.replyButton}>
+              {isReply ? "REPLY" : "SEND"}
+            </button>
+          </div>
+        </div>
+      )}
+    </>
   );
 };
 
