@@ -2,6 +2,7 @@ import styles from "components/Comment/Comment.module.scss";
 import Rating from "components/Comment/Rating/Rating";
 import Reply from "components/Reply/Reply";
 import { useState } from "react";
+import { useMediaQuery } from "react-responsive";
 import DeleteModal from "components/DeleteModal/DeleteModal";
 import { useComments } from "context/CommentsContext";
 
@@ -27,6 +28,7 @@ const Comment: React.FC<CommentProps> = ({
   replyingTo,
   isCurrentUser,
 }) => {
+  const isMobile = useMediaQuery({ maxWidth: 375 });
   const [isReplying, setIsReplying] = useState(false);
   const [deleteModalisOpen, setDeleteOpenIsOpen] = useState(false);
   const [isEdditing, setIsEdditing] = useState(false);
