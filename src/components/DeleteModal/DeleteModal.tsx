@@ -1,11 +1,18 @@
 import styles from "components/DeleteModal/Delete.modal.module.scss";
+import { useComments } from "context/CommentsContext";
 
 interface DeleteModalProps {
-  onDelete: () => void;
+  id: number;
   onClose: () => void;
+
 }
 
-const DeleteModal: React.FC<DeleteModalProps> = ({ onDelete, onClose }) => {
+const DeleteModal: React.FC<DeleteModalProps> = ({ id, onClose }) => {
+  const { deleteComment } = useComments();
+  const handleDelete = () => {
+    deleteComment(id);
+    onClose();
+  };
   return (
     <div className={styles.overlay}>
       <div className={styles.modal}>
@@ -18,7 +25,7 @@ const DeleteModal: React.FC<DeleteModalProps> = ({ onDelete, onClose }) => {
           <button onClick={onClose} className={styles.noButton}>
             NO, CANCEL
           </button>
-          <button onClick={onDelete} className={styles.yesButton}>
+          <button onClick={handleDelete} className={styles.yesButton}>
             YES, DELETE
           </button>
         </div>

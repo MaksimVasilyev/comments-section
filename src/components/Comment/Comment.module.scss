@@ -15,13 +15,16 @@
     background-color: variables.$white;
     padding: 24px;
     @include variables.mobile {
-        
+        padding: 20px 16px 16px 16px;
     }
 }
 .contentContainer {
     display: flex;
     flex-direction: column;
     gap: 15px;
+    @include variables.mobile {
+        width: 100%;
+    }
 }
 
 .userReplyContainer {
@@ -75,6 +78,9 @@
 .deleteReplyContainer {
     display: flex;
     gap: 23.86px;
+    @include variables.mobile {
+        gap: 16px;
+    }
 }
 
 .replyEditContainer {
@@ -144,4 +150,11 @@
     font-weight: 500;
     line-height: 24px;
     color: variables.$moderateBlue;
+}
+
+.mobileRatingControlsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
 }

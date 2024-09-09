@@ -83,7 +83,7 @@ const CommentsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const lastId = getLastId(commentsData.comments); // Убедитесь, что getLastId возвращает корректный id
     const newId = lastId + 1;
     // const date = new Date().toString();
-    const date = "few minutes ago";
+    const date = "just now";
 
     setComments((prevData: CommentsData) => ({
       ...prevData,
@@ -143,7 +143,7 @@ const CommentsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
   const addReply = (id: number, replyText: string) => {
     const lastId = getLastId(commentsData.comments);
     const newId = lastId + 1;
-    const date = "few minutes ago";
+    const date = "just now";
 
     const newReply = {
       id: newId,

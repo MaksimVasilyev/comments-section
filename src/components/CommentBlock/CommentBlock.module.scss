@@ -5,12 +5,19 @@
     flex-direction: column;
     gap: 20px;
     margin-bottom: 20px;
+    @include variables.mobile {
+        gap: 16px;
+    }
 }
 
 .repliesContainer {
     margin-left: 40px;
     display: flex;
     gap: 43px;
+    @include variables.mobile {
+        margin-left: 0;
+        gap: 15px;
+    }
 }
 .replies {
     display: flex;
