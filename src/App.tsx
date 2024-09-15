@@ -21,7 +21,6 @@ function App() {
         />
       ))}
       <Reply currentUser={commentsData.currentUser} />
-
     </>
   );
 }

@@ -10,6 +10,7 @@ type User = {
 export type Comment = {
   id: number;
   content: string;
+  replyingTo?: string;
   createdAt: string;
   score: number;
   user: User;
@@ -28,7 +29,7 @@ interface CommentsContextType {
   addComment: (text: string) => void;
   deleteComment: (id: number) => void;
   editComment: (id: number, newText: string) => void;
-  addReply: (id: number, replyText: string) => void;
+  addReply: (id: number, replyText: string, replyingTo?: string) => void;
 }
 
 const CommentsContext = createContext<CommentsContextType | undefined>(
@@ -140,7 +141,7 @@ const CommentsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     }));
   };
 
-  const addReply = (id: number, replyText: string) => {
+  const addReply = (id: number, replyText: string, replyingTo?: string) => {
     const lastId = getLastId(commentsData.comments);
     const newId = lastId + 1;
     const date = "just now";
@@ -148,6 +149,7 @@ const CommentsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
     const newReply = {
       id: newId,
       content: replyText,
+      replyingTo: replyingTo,
       createdAt: date,
       score: 0,
       user: commentsData.currentUser,
@@ -158,7 +160,6 @@ const CommentsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
       newReply: Comment
     ): Comment[] {
       return comments.map((comment) => {
-        
         if (comment.id === id) {
           return {
             ...comment,
@@ -168,24 +169,22 @@ const CommentsProvider: React.FC<{ children: ReactNode }> = ({ children }) => {
           };
         }
 
-        
         if (comment.replies) {
           const replyExists = comment.replies.some((reply) => reply.id === id);
           if (replyExists) {
             return {
               ...comment,
-              replies: [...comment.replies, newReply], 
+              replies: [...comment.replies, newReply],
             };
           }
         }
 
-       
         return comment;
       });
     }
     setComments((prevData) => ({
       ...prevData,
-      comments: addReplyById(prevData.comments, id, newReply), 
+      comments: addReplyById(prevData.comments, id, newReply),
     }));
   };
 

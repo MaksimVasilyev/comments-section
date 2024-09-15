@@ -36,7 +36,7 @@ const Reply: React.FC<ReplyProps> = ({
       editComment(id, commentText);
       onEdit && onEdit();
     } else {
-      addReply(id, commentText);
+      addReply(id, commentText, replyingTo);
       onReply && onReply();
     }
   };
